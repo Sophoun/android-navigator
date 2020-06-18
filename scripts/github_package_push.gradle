@@ -32,7 +32,7 @@ publishing {
         maven(MavenPublication) {
             groupId 'com.sophoun.android'
             artifactId "navigator"
-            version "0.0.1"
+            version "0.0.2"
             artifact(sourceJar)
             artifact("$buildDir/outputs/aar/library-release.aar") {
                 builtBy build

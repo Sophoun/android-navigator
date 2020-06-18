@@ -1,4 +1,3 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-        package="com.sophoun.android.core">
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+        package="com.sophoun.android.navigator">
 </manifest>
