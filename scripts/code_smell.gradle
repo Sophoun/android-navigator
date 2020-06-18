@@ -79,7 +79,7 @@ dokka {
     outputFormat = 'gfm'
     outputDirectory = "$rootDir/documentation"
     sourceDirs = files(
-            "$rootDir/core-utils/src/main/java"
+            "$rootDir/library/src/main/java"
     )
     reportUndocumented = true
 }

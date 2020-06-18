@@ -1,7 +1,7 @@
 ext {
     configs = ext {
-        appName             = "CoreUtils"
-        application_id      = "com.sophoun.project.core.coreutils"
+        appName             = "Navigator"
+        application_id      = "com.sophoun.app.navigator"
         compile_sdk         = 28
         min_sdk             = 21
         target_sdk          = 28

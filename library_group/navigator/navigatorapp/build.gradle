@@ -1,8 +1,0 @@
-apply plugin: 'com.android.application'
-apply plugin: 'kotlin-android'
-apply plugin: 'kotlin-android-extensions'
-apply from: "$rootDir/app/build.gradle"
-
-dependencies {
-    implementation(project(':library_group:navigator:library')) { transitive = false }
-}

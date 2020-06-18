@@ -30,14 +30,14 @@ publishing {
     }*/
     publications {
         maven(MavenPublication) {
-            groupId 'com.sophoun.project.core'
-            artifactId "core-utils"
-            version "0.2.6"
+            groupId 'com.sophoun.android'
+            artifactId "navigator"
+            version "0.0.1"
             artifact(sourceJar)
-            artifact("$buildDir/outputs/aar/core-utils-release.aar") {
+            artifact("$buildDir/outputs/aar/library-release.aar") {
                 builtBy build
             }
-            // Add all dependencies to pop.xml file
+            // Add all dependencies to pom.xml file
             pom.withXml {
                 def dependenciesNode = asNode().appendNode('dependencies')
                 List<DependencySet> dependencySetList = new ArrayList()

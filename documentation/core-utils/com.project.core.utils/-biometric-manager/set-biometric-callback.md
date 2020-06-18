@@ -1,5 +1,0 @@
-[core-utils](../../index.md) / [com.sophoun.android.core.utils](../index.md) / [BiometricManager](index.md) / [setBiometricCallback](./set-biometric-callback.md)
-
-# setBiometricCallback
-
-`fun setBiometricCallback(onAuthenticationError: (errorCode: `[`Int`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html)`, errString: `[`CharSequence`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-char-sequence/index.html)`) -> `[`Unit`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html)`, onAuthenticationFailed: () -> `[`Unit`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html)`, onAuthenticationSucceeded: (<ERROR CLASS>) -> `[`Unit`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html)`): `[`Unit`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html)
