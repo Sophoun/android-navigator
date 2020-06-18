@@ -33,7 +33,7 @@ allprojects {
         // Local repo
         // maven { url "file://$rootDir.absolutePath/core-utils/build/repo" }
         maven { // access github package
-            url = uri("https://maven.pkg.github.com/sophoun/core-utils")
+            url = uri("https://maven.pkg.github.com/sophoun/android-navigator")
             credentials {
                 username = githubProperties['gpr.usr'] ?: System.getenv("GPR_USER")
                 password = githubProperties['gpr.key'] ?: System.getenv("GPR_API_KEY")
