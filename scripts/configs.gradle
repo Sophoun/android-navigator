@@ -1,0 +1,14 @@
+ext {
+    configs = ext {
+        appName             = "CoreUtils"
+        application_id      = "com.sophoun.project.core.coreutils"
+        compile_sdk         = 28
+        min_sdk             = 21
+        target_sdk          = 28
+        version_code        = 1
+        version_name        = "1.0"
+        instrument_runner   = "androidx.test.runner.AndroidJUnitRunner"
+
+        minify_enabled      = false
+    }
+}

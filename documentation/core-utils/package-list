@@ -1,0 +1,17 @@
+$dokka.format:gfm
+$dokka.linkExtension:md
+
+com.sophoun.android.billing
+com.sophoun.android.component
+com.sophoun.android.framework
+com.sophoun.android.framework.adapter
+com.sophoun.android.framework.navigation
+com.sophoun.android.framework.notification
+com.sophoun.android.framework.permission
+com.sophoun.android.framework.query
+com.sophoun.android.framework.service
+com.sophoun.android.framework.state
+com.sophoun.android.network
+com.sophoun.android.repository
+com.sophoun.android.core.utils
+com.sophoun.android.core.utils.validation

@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">Test</string>
+    <string name="channel_group_id">Channel group id</string>
+    <string name="channel_group_name">Channel group name</string>
+    <string name="channel_group_id1">Channel group id 1</string>
+    <string name="channel_group_name1">Channel group name 1</string>
+    <string name="channel_id">Channel Id</string>
+    <string name="channel_name">Channel name</string>
+    <string name="channel_description">Channel description</string>
+    <string name="channel_id1">Channel Id 1</string>
+    <string name="channel_name1">Channel name 1</string>
+    <string name="channel_description1">Channel description 1</string>
+    <string name="message">Click to go to second fragment.</string>
+    <string name="title">Deep link</string>
+    <string name="click_me">Click Me</string>
+    <string name="fragment">Fragment</string>
+</resources>

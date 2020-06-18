@@ -1,0 +1,31 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+
+apply from: "$rootDir/scripts/configs.gradle"
+apply from: "$projectDir/dependencies.gradle"
+apply from: "$rootDir/scripts/github_package_push.gradle"
+
+android {
+    compileSdkVersion                   configs.compile_sdk
+    defaultConfig {
+        minSdkVersion                   configs.min_sdk
+        targetSdkVersion                configs.target_sdk
+        versionCode                     configs.version_code
+        versionName                     configs.version_name
+
+        testInstrumentationRunner       configs.instrument_runner
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled               configs.minify_enabled
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    lintOptions {
+        abortOnError false
+    }
+}

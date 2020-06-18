@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:id="@+id/navHomeAction"
+          android:title="Home"
+          android:icon="@android:drawable/ic_dialog_info"
+    />
+
+    <item android:id="@+id/navFirstAction"
+          android:title="First"
+          android:icon="@android:drawable/ic_dialog_map"
+    />
+
+    <item android:id="@+id/navSecondAction"
+            android:title="Second"
+            android:icon="@android:drawable/ic_dialog_email"
+            />
+
+</menu>

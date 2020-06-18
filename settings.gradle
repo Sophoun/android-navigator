@@ -1,0 +1,5 @@
+// Navigator
+include ':library_group:navigator:library', ':library_group:navigator:navigatorapp'
+
+// Application
+include ':app'
