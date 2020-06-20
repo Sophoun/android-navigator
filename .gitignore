@@ -15,3 +15,4 @@ reports
 /github.properties
 .idea/*
 .idea
+secret/bintray.properties
