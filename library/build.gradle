@@ -4,7 +4,8 @@ apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 
 apply from: "$rootDir/scripts/configs.gradle"
-apply from: "$rootDir/scripts/github_package_push.gradle"
+//apply from: "$rootDir/scripts/github_package_push.gradle"
+apply from: "$rootDir/scripts/bintray_publish.gradle"
 
 android {
     compileSdkVersion                   configs.compile_sdk

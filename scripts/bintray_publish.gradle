@@ -1,0 +1,72 @@
+apply plugin: 'com.jfrog.bintray'
+apply plugin: 'maven-publish'
+
+//region Publish to jCenter
+def libGroupId = 'com.github.sophoun'
+def libArtifactId = 'android-navigator'
+def libVersion = '0.0.1'
+def libDesc = 'Android Fragment Navigator.'
+def libLicenses = ['Apache-2.0']
+def libVCSUrl = 'https://github.com/Sophoun/android-navigator.git'
+
+// Generate Source Jar
+task sourceJar(type: Jar) {
+    from android.sourceSets.main.java.srcDirs
+    classifier "sources"
+}
+
+// Create the publication with the pom configuration
+publishing {
+    publications {
+        release(MavenPublication) {
+            groupId libGroupId
+            artifactId libArtifactId
+            version libVersion
+            artifact(sourceJar)
+            artifact("$buildDir/outputs/aar/$libArtifactId-release.aar")
+        }
+    }
+}
+
+// Bintray config
+Properties properties = new Properties()
+properties.load(project.rootProject.file("$rootDir/secret/bintray.properties").newDataInputStream())
+
+bintray {
+    user = properties.getProperty("bintray.user")
+    key = properties.getProperty("bintray.apikey")
+    publications = ['release']
+    pkg {
+        repo = "maven"
+        name = "$libGroupId:$libArtifactId"
+        desc = libDesc
+        licenses = libLicenses
+        vcsUrl = libVCSUrl
+        version {
+            name = libVersion
+            vcsTag = libVersion
+            released = new Date()
+            gpg {
+                sign = true
+            }
+        }
+    }
+    publish = true
+}
+
+/**
+ * Rename .aar file
+ */
+afterEvaluate {
+    def debugFile = file("$buildDir/outputs/aar/library-debug.aar")
+    def releaseFile = file("$buildDir/outputs/aar/library-release.aar")
+    tasks.named("assembleDebug").configure {
+        doLast {
+            debugFile.renameTo("$buildDir/outputs/aar/android-navigator-debug.aar")
+        }
+    }
+    tasks.named("assembleRelease").configure {
+        doLast {
+            releaseFile.renameTo("$buildDir/outputs/aar/android-navigator-release.aar")
+        }}
+}

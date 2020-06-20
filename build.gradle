@@ -13,13 +13,13 @@ buildscript {
         // in the individual module build.gradle files
         classpath 'com.github.dcendents:android-maven-gradle-plugin:2.1'
         //classpath 'digital.wup:android-maven-publish:3.6.2'
+        classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.8.1'
     }
 }
 
 plugins {
     id 'org.jetbrains.dokka' version '0.9.18'
     id "io.gitlab.arturbosch.detekt" version "1.0.0-RC15"
-    //id "maven-publish"
 }
 
 // Github token
