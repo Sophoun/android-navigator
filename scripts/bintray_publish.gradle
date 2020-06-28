@@ -6,8 +6,17 @@ def libGroupId = 'com.github.sophoun'
 def libArtifactId = 'android-navigator'
 def libVersion = '0.0.1'
 def libDesc = 'Android Fragment Navigator.'
-def libLicenses = ['Apache-2.0']
+def libLicenses = 'Apache-2.0'
+def libLicensesUrl = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
 def libVCSUrl = 'https://github.com/Sophoun/android-navigator.git'
+
+def developerId = 'sophoun'
+def developerName = 'Sophoun Nheum'
+def developerEmail = 'sophoun.unix@gmail.com'
+
+def scmConnection = 'scm:git:git://github.com/Sophoun/android-navigator.git'
+def scmDevConnection = 'scm:git:ssh://github.com/Sophoun/android-navigator.git'
+def scmDevUrl = "https://github.com/Sophoun/android-navigator"
 
 // Generate Source Jar
 task sourceJar(type: Jar) {
@@ -24,6 +33,31 @@ publishing {
             version libVersion
             artifact(sourceJar)
             artifact("$buildDir/outputs/aar/$libArtifactId-release.aar")
+
+            pom {
+                name = libDesc
+                description = libDesc
+                url = libVCSUrl
+
+                licenses {
+                    license {
+                        name = libLicenses
+                        url = libLicensesUrl
+                    }
+                }
+                developers {
+                    developer {
+                        id = developerId
+                        name = developerName
+                        email = developerEmail
+                    }
+                }
+                scm {
+                    connection = scmConnection
+                    developerConnection = scmDevConnection
+                    url = scmDevUrl
+                }
+            }
         }
     }
 }
