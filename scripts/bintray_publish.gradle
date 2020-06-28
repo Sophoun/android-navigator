@@ -32,7 +32,9 @@ publishing {
             artifactId libArtifactId
             version libVersion
             artifact(sourceJar)
-            artifact("$buildDir/outputs/aar/$libArtifactId-release.aar")
+            artifact("$buildDir/outputs/aar/$libArtifactId-release.aar") {
+                builtBy build
+            }
 
             pom {
                 name = libDesc
