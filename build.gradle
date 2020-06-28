@@ -11,8 +11,6 @@ buildscript {
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
-        classpath 'com.github.dcendents:android-maven-gradle-plugin:2.1'
-        //classpath 'digital.wup:android-maven-publish:3.6.2'
         classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.8.1'
     }
 }
@@ -22,36 +20,10 @@ plugins {
     id "io.gitlab.arturbosch.detekt" version "1.0.0-RC15"
 }
 
-// Github token
-def githubProperties = new Properties()
-githubProperties.load(new FileInputStream(rootProject.file("github.properties")))
-
 allprojects {
     repositories {
         google()
         jcenter()
-        // Local repo
-        // maven { url "file://$rootDir.absolutePath/core-utils/build/repo" }
-        maven { // access github package
-            url = uri("https://maven.pkg.github.com/sophoun/android-navigator")
-            credentials {
-                username = githubProperties['gpr.usr'] ?: System.getenv("GPR_USER")
-                password = githubProperties['gpr.key'] ?: System.getenv("GPR_API_KEY")
-            }
-        }
-    }
-    // Resolve for dagger generate code with the true packages
-    afterEvaluate {
-        if (project.hasProperty('kapt')) {
-            // Reference for 'kapt' DSL: https://kotlinlang.org/docs/reference/kapt.html#java-compiler-options
-            kapt {
-                // we expect this closure to run over a org.jetbrains.kotlin.gradle.plugin.KaptExtension
-                javacOptions {
-                    option("-source", "8")
-                    option("-target", "8")
-                }
-            }
-        }
     }
 }
 
