@@ -96,11 +96,11 @@ afterEvaluate {
     def releaseFile = file("$buildDir/outputs/aar/library-release.aar")
     tasks.named("assembleDebug").configure {
         doLast {
-            debugFile.renameTo("$buildDir/outputs/aar/android-navigator-debug.aar")
+            debugFile.renameTo("$buildDir/outputs/aar/$libArtifactId-debug.aar")
         }
     }
     tasks.named("assembleRelease").configure {
         doLast {
-            releaseFile.renameTo("$buildDir/outputs/aar/android-navigator-release.aar")
+            releaseFile.renameTo("$buildDir/outputs/aar/$libArtifactId-release.aar")
         }}
 }
