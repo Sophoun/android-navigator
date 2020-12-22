@@ -4,7 +4,7 @@ apply plugin: 'maven-publish'
 //region Publish to jCenter
 def libGroupId = 'com.github.sophoun'
 def libArtifactId = 'android-navigator'
-def libVersion = '0.0.1'
+def libVersion = '0.0.2'
 def libDesc = 'Android Fragment Navigator.'
 def libLicenses = 'Apache-2.0'
 def libLicensesUrl = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
