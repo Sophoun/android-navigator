@@ -1,0 +1,103 @@
+apply plugin: 'com.jfrog.artifactory'
+apply plugin: 'maven-publish'
+
+//region Publish to jCenter
+def libGroupId = 'com.sophoun'
+def libArtifactId = 'android-navigator'
+def libVersion = '0.0.1'
+def libDesc = 'Android Fragment Navigator.'
+def libLicenses = 'Apache-2.0'
+def libLicensesUrl = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+def libVCSUrl = 'https://github.com/Sophoun/android-navigator.git'
+
+def developerId = 'sophoun'
+def developerName = 'Sophoun Nheum'
+def developerEmail = 'sophoun.unix@gmail.com'
+
+def scmConnection = 'scm:git:git://github.com/Sophoun/android-navigator.git'
+def scmDevConnection = 'scm:git:ssh://github.com/Sophoun/android-navigator.git'
+def scmDevUrl = "https://github.com/Sophoun/android-navigator"
+
+// Generate Source Jar
+task sourceJar(type: Jar) {
+    from android.sourceSets.main.java.srcDirs
+    classifier "sources"
+}
+
+// Create the publication with the pom configuration
+publishing {
+    publications {
+        release(MavenPublication) {
+            groupId libGroupId
+            artifactId libArtifactId
+            version libVersion
+            artifact(sourceJar)
+            artifact("$buildDir/outputs/aar/$libArtifactId-release.aar") {
+                builtBy build
+            }
+
+            pom {
+                name = libDesc
+                description = libDesc
+                url = libVCSUrl
+
+                licenses {
+                    license {
+                        name = libLicenses
+                        url = libLicensesUrl
+                    }
+                }
+                developers {
+                    developer {
+                        id = developerId
+                        name = developerName
+                        email = developerEmail
+                    }
+                }
+                scm {
+                    connection = scmConnection
+                    developerConnection = scmDevConnection
+                    url = scmDevUrl
+                }
+            }
+        }
+    }
+}
+
+Properties properties = new Properties()
+properties.load(project.rootProject.file("$rootDir/secret/jfrog.properties").newDataInputStream())
+
+// jFrog config
+artifactoryPublish {
+    dependsOn('build')
+    publications(publishing.publications.release)
+}
+artifactory {
+    clientConfig.setIncludeEnvVars(true)
+    contextUrl = 'https://sophoun1.jfrog.io/artifactory/'
+    publish {
+        repository {
+            repoKey = 'maven' // The Artifactory repository key to publish to
+            username = properties.getProperty("bintray.user")
+            password = properties.getProperty("bintray.apikey")
+        }
+    }
+}
+
+/**
+ * Rename .aar file
+*/
+afterEvaluate {
+    def debugFile = file("$buildDir/outputs/aar/library-debug.aar")
+    def releaseFile = file("$buildDir/outputs/aar/library-release.aar")
+    tasks.named("assembleDebug").configure {
+        doLast {
+            debugFile.renameTo("$buildDir/outputs/aar/$libArtifactId-debug.aar")
+        }
+    }
+    tasks.named("assembleRelease").configure {
+        doLast {
+            releaseFile.renameTo("$buildDir/outputs/aar/$libArtifactId-release.aar")
+        }
+    }
+}

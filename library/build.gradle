@@ -5,7 +5,7 @@ apply plugin: 'kotlin-kapt'
 
 apply from: "$rootDir/scripts/configs.gradle"
 //apply from: "$rootDir/scripts/github_package_push.gradle"
-apply from: "$rootDir/scripts/bintray_publish.gradle"
+apply from: "$rootDir/scripts/jfrog_publish.gradle"
 
 android {
     compileSdkVersion                   configs.compile_sdk
@@ -31,6 +31,7 @@ android {
 }
 
 dependencies {
+    implementation 'com.github.sophoun:android-navigator:0.0.2'
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation "androidx.fragment:fragment-ktx:1.2.5"
 }

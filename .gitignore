@@ -15,4 +15,4 @@ reports
 /github.properties
 .idea/*
 .idea
-secret/bintray.properties
+secret/jfrog.properties
