@@ -1,6 +1,7 @@
 package com.sophoun.navigator
 
 import androidx.annotation.IdRes
+import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
@@ -210,7 +211,11 @@ open class FragmentStackNavigator(
      * Push fragment to stack
      */
     open fun push(fragment: Fragment) {
-        addFragment(fragment, true)
+        if(fragment is DialogFragment) {
+            fragment.show(fragmentManager, fragment::class.java.name)
+        } else {
+            addFragment(fragment, true)
+        }
     }
 
     /**
