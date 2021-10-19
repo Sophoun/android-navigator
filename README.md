@@ -1,3 +1,7 @@
+Deprecated!!!
+
+Use [PAUL instead](https://github.com/Sophoun/paul)
+
 # Android Fragment Navigator
 
 This is a library that want to help you to navigate fragments in
